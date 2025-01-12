@@ -13,9 +13,10 @@ import java.util.ArrayList;
 @Setter
 public class Profesor {
 
-    private int id;
     private String nombre;
+    private String apellido;
     private String correo;
-    private ArrayList<Proyecto> listaDeProyectosAsociados;
+    private int idProyecto;
+
 
 }
