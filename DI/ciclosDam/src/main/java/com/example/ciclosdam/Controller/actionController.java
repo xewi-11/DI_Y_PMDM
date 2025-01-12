@@ -1,6 +1,7 @@
 package com.example.ciclosdam.Controller;
 
 import com.example.ciclosdam.DAO.ApiDAO;
+import com.example.ciclosdam.HelloApplication;
 import com.example.ciclosdam.model.Proyecto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,7 +78,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
     @Override
     public void handle(ActionEvent actionEvent) {
         if(actionEvent.getSource()==menuAddAlumno){
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("addAlumno-view.fxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addAlumno_view.fxml"));
             try {
                Parent root = loader.load();
                 Stage stage=new Stage();
@@ -88,7 +89,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
             }
 
         } else if (actionEvent.getSource()==menuAddProfesor) {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("addProfesor.fxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesorfxml"));
             Parent root= null;
             try {
                 root = loader.load();
