@@ -21,13 +21,12 @@ public class AlumnoDAO {
     }
 
     public void registrrarAlumno(Alumno alumno) throws SQLException {
-        String query = "INSERT INTO %s (%s,%s,%s,%s)" + "VALUES (?,?,?,?,?)";
-        String queryFormateada = String.format(query, DBSchema.TAB_ALUMNNO, DBSchema.COL_NAME_ALUMNO, DBSchema.COL_SNAME_ALUMNO, DBSchema.COL_DNI_ALUMNO, DBSchema.COL_FK_ID_PROYECTO_ALUMNO);
+        String query = "INSERT INTO %s (%s,%s,%s)" + "VALUES (?,?,?,?)";
+        String queryFormateada = String.format(query, DBSchema.TAB_ALUMNNO, DBSchema.COL_NAME_ALUMNO, DBSchema.COL_SNAME_ALUMNO, DBSchema.COL_DNI_ALUMNO);
         preparedStatement = connection.prepareStatement(queryFormateada);
         preparedStatement.setString(1, alumno.getNombre());
         preparedStatement.setString(2, alumno.getApellido());
         preparedStatement.setString(3, alumno.getDNI());
-        preparedStatement.setInt(4, alumno.getIdProyecto());
         preparedStatement.execute();
     }
 
