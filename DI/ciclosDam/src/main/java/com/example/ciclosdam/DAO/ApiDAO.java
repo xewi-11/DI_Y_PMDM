@@ -52,10 +52,10 @@ public class ApiDAO {
     }
     public void guardarProyectosEnBaseDeDatos(ObservableList<Proyecto> proyectos) throws SQLException {
         String query = "INSERT INTO %s (%s,%s)" + "VALUES (?,?)";
-        String queryFormateada = String.format(query, DBSchema.TAB_ALUMNNO, DBSchema.COL_NAME_ALUMNO, DBSchema.COL_SNAME_ALUMNO, DBSchema.COL_DNI_ALUMNO);
+        String queryFormateada = String.format(query, DBSchema.TAB_PROYECTO, DBSchema.COL_ID_PROYECTO, DBSchema.COL_DESCRIPCION);
         preparedStatement = connection.prepareStatement(queryFormateada);
         for(int i = 0; i < proyectos.size(); i++) {
-            preparedStatement.setString(1, String.valueOf(proyectos.get(i).getId()));
+            preparedStatement.setInt(1, proyectos.get(i).getId());
             preparedStatement.setString(2, proyectos.get(i).getDescripcion());
             preparedStatement.execute();
         }
