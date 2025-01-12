@@ -12,6 +12,7 @@ module com.example.ciclosdam {
     requires java.sql;
     requires org.json;
     requires com.google.gson;
+    requires static lombok;
 
     opens com.example.ciclosdam to javafx.fxml;
     exports com.example.ciclosdam;
