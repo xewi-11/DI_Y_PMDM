@@ -1,5 +1,8 @@
 package com.example.ciclosdam.DAO;
 
+import com.example.ciclosdam.DataBase.DBConnection;
+import com.example.ciclosdam.DataBase.DBSchema;
+import com.example.ciclosdam.model.Alumno;
 import com.example.ciclosdam.model.Proyecto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,9 +15,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.*;
 
 public class ApiDAO {
     String urlProyectos="https://run.mocky.io/v3/d907a4e8-d037-4e09-b1bd-39c83758c73c";
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
+    public ApiDAO() {
+        connection = new DBConnection().getConnection();
+    }
 
     public ObservableList<Proyecto> cargarProyectos() throws IOException {
         // Simulación de carga de datos
@@ -37,7 +48,31 @@ public class ApiDAO {
             String descripcion = proyecto.getString("proyect_descriptoin");
             proyectos.add(new Proyecto(id,descripcion));
         }
-
         return proyectos;
+    }
+    public void guardarProyectosEnBaseDeDatos(ObservableList<Proyecto> proyectos) throws SQLException {
+        String query = "INSERT INTO %s (%s,%s)" + "VALUES (?,?)";
+        String queryFormateada = String.format(query, DBSchema.TAB_ALUMNNO, DBSchema.COL_NAME_ALUMNO, DBSchema.COL_SNAME_ALUMNO, DBSchema.COL_DNI_ALUMNO);
+        preparedStatement = connection.prepareStatement(queryFormateada);
+        for(int i = 0; i < proyectos.size(); i++) {
+            preparedStatement.setString(1, String.valueOf(proyectos.get(i).getId()));
+            preparedStatement.setString(2, proyectos.get(i).getDescripcion());
+            preparedStatement.execute();
+        }
+    }
+
+    public ObservableList<Proyecto> seleccionarProyectos() throws SQLException {
+        String query = "SELECT * FROM %s";
+        String queryFormateada = String.format(query, DBSchema.TAB_PROYECTO);
+        preparedStatement = connection.prepareStatement(queryFormateada);
+        resultSet = preparedStatement.executeQuery();
+        ObservableList<Proyecto> lista = FXCollections.observableArrayList();
+        while (resultSet.next()) {
+            int  id = resultSet.getInt(DBSchema.COL_NAME_ALUMNO);
+            String descripcion = resultSet.getString(DBSchema.COL_SNAME_PROFESOR);
+            lista.add(new Proyecto(id, descripcion));
+        }
+        return lista;
+
     }
 }

@@ -15,4 +15,14 @@ public interface DBSchema {
     String COL_SNAME_PROFESOR = "apellido";
     String COL_CORREO_PROFESOR = "correo";
     String COL_FK_ID_PROYECTO_PROFESOR = "id_proyecto";
+
+    String TAB_PROYECTO="Proyecto";
+    String COL_ID_PROYECTO="id";
+    String COL_DESCRIPCION="descripcion";
+
+    String TAB_DATOS="Datos";
+    String COL_ID_DATOS="id";
+    String COL_ALUMNO_DATOS="alumno";
+    String COL_PROFESOR_DATOS="profsor";
+    String COL_FK_ID_PROYECTO_DATOS="id_proyecto";
 }

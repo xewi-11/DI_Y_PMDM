@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class actionController implements Initializable, EventHandler<ActionEvent> {
@@ -67,7 +68,10 @@ public class actionController implements Initializable, EventHandler<ActionEvent
 
         try {
             listaProyecto=proyectoDAO.cargarProyectos();
+            proyectoDAO.guardarProyectosEnBaseDeDatos(listaProyecto);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         tablaProyectos.setItems(listaProyecto);
