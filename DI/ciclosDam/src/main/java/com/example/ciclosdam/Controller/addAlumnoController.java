@@ -44,7 +44,7 @@ public class addAlumnoController implements Initializable,, EventHandler<ActionE
             if(txtNombre.getText().isEmpty() && txtApellido.getText().isEmpty()){
                 System.out.println("Todos los campos son obligatorios");
             }else{
-                
+
             }
         }
     }
