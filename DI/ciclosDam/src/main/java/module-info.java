@@ -20,4 +20,6 @@ module com.example.ciclosdam {
     opens com.example.ciclosdam.Controller to javafx.fxml,com.google.gson,org.json;
     exports com.example.ciclosdam.DataBase;
     opens com.example.ciclosdam.DataBase to javafx.fxml,java.sql;
+    opens com.example.ciclosdam.model to javafx.fxml,javafx.base;
+    exports com.example.ciclosdam.model to javafx.fxml,org.controlsfx.controls;
 }
