@@ -78,7 +78,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
     @Override
     public void handle(ActionEvent actionEvent) {
         if(actionEvent.getSource()==menuAddAlumno){
-            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addAlumno_view.fxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addAlumno-view.fxml"));
             try {
                Parent root = loader.load();
                 Stage stage=new Stage();
@@ -89,7 +89,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
             }
 
         } else if (actionEvent.getSource()==menuAddProfesor) {
-            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesorfxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesor.fxml"));
             Parent root= null;
             try {
                 root = loader.load();
