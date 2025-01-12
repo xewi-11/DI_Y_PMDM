@@ -89,7 +89,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
             }
 
         } else if (actionEvent.getSource()==menuAddProfesor) {
-            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesor.view.fxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesor-view.fxml"));
             Parent root= null;
             try {
                 root = loader.load();
@@ -103,7 +103,16 @@ public class actionController implements Initializable, EventHandler<ActionEvent
         } else if (actionEvent.getSource()==menuProyecto) {
             
         } else if (actionEvent.getSource()==menuUnificar) {
-            
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("unificar-view.fxml"));
+            Parent root= null;
+            try {
+                root = loader.load();
+                Stage stage=new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
