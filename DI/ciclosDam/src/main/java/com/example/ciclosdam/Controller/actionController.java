@@ -89,7 +89,7 @@ public class actionController implements Initializable, EventHandler<ActionEvent
             }
 
         } else if (actionEvent.getSource()==menuAddProfesor) {
-            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesorfxml"));
+            FXMLLoader loader=new FXMLLoader(HelloApplication.class.getResource("addProfesor.view.fxml"));
             Parent root= null;
             try {
                 root = loader.load();
