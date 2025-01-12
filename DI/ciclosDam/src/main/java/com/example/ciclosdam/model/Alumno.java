@@ -13,6 +13,5 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private String DNI;
-    private int idProyecto;
     // Constructor, getters y setters
 }
