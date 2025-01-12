@@ -40,8 +40,7 @@ public class AlumnoDAO {
             String nombre = resultSet.getString(DBSchema.COL_NAME_ALUMNO);
             String apellido = resultSet.getString(DBSchema.COL_SNAME_PROFESOR);
             String dni = resultSet.getString(DBSchema.COL_DNI_ALUMNO);
-            int id_proyecto = resultSet.getInt(DBSchema.COL_FK_ID_PROYECTO_ALUMNO);
-            lista.add(new Alumno(nombre, apellido, dni, id_proyecto));
+            lista.add(new Alumno(nombre, apellido, dni));
         }
         return lista;
 

@@ -21,13 +21,12 @@ public class ProfesorDAO {
     }
 
     public void registrarProfesor(Profesor profesor) throws SQLException {
-        String query = "INSERT INTO %s (%s,%s,%s,%s)" + "VALUES (?,?,?,?)";
-        String queryFormateada = String.format(query, DBSchema.TAB_PROFESOR, DBSchema.COL_NAME_PROFESOR, DBSchema.COL_SNAME_PROFESOR, DBSchema.COL_CORREO_PROFESOR, DBSchema.COL_FK_ID_PROYECTO_PROFESOR);
+        String query = "INSERT INTO %s (%s,%s,%s)" + "VALUES (?,?,?)";
+        String queryFormateada = String.format(query, DBSchema.TAB_PROFESOR, DBSchema.COL_NAME_PROFESOR, DBSchema.COL_SNAME_PROFESOR, DBSchema.COL_CORREO_PROFESOR);
         preparedStatement = connection.prepareStatement(queryFormateada);
         preparedStatement.setString(1, profesor.getNombre());
         preparedStatement.setString(2, profesor.getApellido());
         preparedStatement.setString(3, profesor.getCorreo());
-        preparedStatement.setInt(4, profesor.getIdProyecto());
         preparedStatement.execute();
     }
 
@@ -42,8 +41,7 @@ public class ProfesorDAO {
             String nombre = resultSet.getString(DBSchema.COL_NAME_PROFESOR);
             String apellido = resultSet.getString(DBSchema.COL_SNAME_PROFESOR);
             String correo = resultSet.getString(DBSchema.COL_CORREO_PROFESOR);
-            int id_proyecto = resultSet.getInt(DBSchema.COL_FK_ID_PROYECTO_PROFESOR);
-            lista.add(new Profesor(nombre,apellido,correo,id_proyecto));
+            lista.add(new Profesor(nombre,apellido,correo));
         }
         return lista;
     }
