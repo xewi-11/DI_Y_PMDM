@@ -1,0 +1,20 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let item of pedidos">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ item.id }}</h5>
+        <p class="card-text">
+          {{ item.nombre }}
+        </p>
+        <p class="card-text">{{ item.precio }}€</p>
+        <button
+          class="btn btn-primary"
+          (click)="verDetalle(item)"
+          style="width: 100%"
+        >
+          Ver Detalles
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

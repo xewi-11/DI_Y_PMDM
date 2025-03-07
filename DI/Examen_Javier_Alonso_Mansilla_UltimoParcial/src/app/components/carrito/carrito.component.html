@@ -1,0 +1,30 @@
+<input
+  type="text"
+  class="form-control"
+  placeholder="Nombre del pedido"
+  [(ngModel)]="nombrePedido"
+/>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let item of carrito">
+    <div class="card">
+      <img
+        [src]="item | imagenes"
+        class="card-img-top"
+        alt="..."
+        style="height: 200px"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ item.nombre }}</h5>
+        <p class="card-text">
+          {{ item.precio }}
+        </p>
+        <p class="card-text">
+          {{ item.valor_energetico }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="hacerPedido()" style="width: 100%">
+    Hacer pedido
+  </button>
+</div>
